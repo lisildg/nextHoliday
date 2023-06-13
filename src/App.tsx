@@ -71,6 +71,7 @@ const nextHoliday = HOLIDAYS.find((holiday) => holiday.date > today) || {
   ),
 } ;
 
+const antHoliday = HOLIDAYS.filter(holiday => holiday.date < today).pop()
 const dieferenciaMilisegundos = nextHoliday.date.getTime() - today.getTime();
 const dayDiff = Math.round(dieferenciaMilisegundos / 86400000);
 
@@ -80,6 +81,8 @@ function App() {
   return (
     <main>
       <h1>El proximo feriado {nextHoliday.name} es {rtf.format(dayDiff, "days")} </h1>
+      <br/>
+      <h3>El feriado anterior fue {antHoliday?.name}</h3>
     </main>
   );
 }
