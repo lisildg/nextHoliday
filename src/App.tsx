@@ -1,3 +1,4 @@
+import "./styles.css";
 const HOLIDAYS = [
   {
     date: new Date("2023-01-01"),
@@ -79,11 +80,16 @@ const rtf = new Intl.RelativeTimeFormat("es-AR");
 
 function App() {
   return (
-    <main>
-      <h1>El proximo feriado {nextHoliday.name} es {rtf.format(dayDiff, "days")} </h1>
-      <br/>
-      <h3>El feriado anterior fue {antHoliday?.name}</h3>
-    </main>
+    <main className="container">
+    <h1 className="title">
+      El próximo feriado {nextHoliday.name} es{" "}
+      <span className="highlight">{rtf.format(dayDiff, "days")}</span>
+    </h1>
+    <br />
+    <h3 className="subtitle">
+      El feriado anterior fue <span className="highlight1">{antHoliday?.name}</span>
+    </h3>
+  </main>
   );
 }
 
