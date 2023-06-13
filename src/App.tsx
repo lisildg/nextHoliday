@@ -65,14 +65,14 @@ const HOLIDAYS = [
 const today = new Date();
 const nextHoliday = HOLIDAYS.find((holiday) => holiday.date > today) || {
   ...HOLIDAYS[0],
-   date: new Date(
-  new Date(HOLIDAYS[0].date).getFullYear() + 1,
-  new Date(HOLIDAYS[0].date).getMonth(),
-  new Date(HOLIDAYS[0].date).getDate() + 1,
+  date: new Date(
+    new Date(HOLIDAYS[0].date).getFullYear() + 1,
+    new Date(HOLIDAYS[0].date).getMonth(),
+    new Date(HOLIDAYS[0].date).getDate() + 1,
   ),
-} ;
+};
 
-const antHoliday = HOLIDAYS.filter(holiday => holiday.date < today).pop()
+const antHoliday = HOLIDAYS.filter((holiday) => holiday.date < today).pop();
 const dieferenciaMilisegundos = nextHoliday.date.getTime() - today.getTime();
 const dayDiff = Math.round(dieferenciaMilisegundos / 86400000);
 
@@ -81,15 +81,17 @@ const rtf = new Intl.RelativeTimeFormat("es-AR");
 function App() {
   return (
     <main className="container">
-    <h1 className="title">
-      El próximo feriado {nextHoliday.name} es{" "}
-      <span className="highlight">{rtf.format(dayDiff, "days")}</span>
-    </h1>
-    <br />
-    <h3 className="subtitle">
-      El feriado anterior fue <span className="highlight1">{antHoliday?.name}</span>
-    </h3>
-  </main>
+      <span className="title1">¿Qué planes tienes para los días feriados en Argentina? </span>
+      <br />
+      <h1 className="title">
+        Disfruta del próximo feriado {nextHoliday.name} es{" "}
+        <span className="highlight">{rtf.format(dayDiff, "days")}</span>
+      </h1>
+      <br />
+      <h3 className="subtitle">
+        El feriado anterior fue <span className="highlight1">{antHoliday?.name}</span>
+      </h3>
+    </main>
   );
 }
 
